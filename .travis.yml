@@ -13,9 +13,6 @@ notifications:
     on_success: change
     on_failure: always
 
-before_install: 
-  - chmod +x tests/ci-setup.sh; ./tests/ci-setup.sh;
-
 install: 
   - composer install --prefer-source
 
