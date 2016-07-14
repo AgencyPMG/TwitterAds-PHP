@@ -46,8 +46,8 @@ abstract class Request
         foreach($this->getParameters() as $key => $parameter) {
             $spec = ':'.$key;
 
-            if (strpos($spec)) {
-                $url = str_replace($url, $parameter);
+            if (strpos($url, $spec)) {
+                $url = str_replace($spec, $parameter, $url);
             } else {
                 $params[$key] = $parameter;
             }
