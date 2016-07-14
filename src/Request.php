@@ -31,4 +31,28 @@ abstract class Request
      * @return associative array
      */
     abstract public function getHeaders();
+
+    /**
+     * Transforms a incomplete url using the parameters and returns 
+     * the url and modified parameters
+     *
+     * @return list($url, $params)
+     */
+    public function getParsedUrlAndParams()
+    {
+        $url = $this->getUrl();
+
+        $params = [];
+        foreach($this->getParameters() as $key => $parameter) {
+            $spec = ':'.$key;
+
+            if (strpos($spec)) {
+                $url = str_replace($url, $parameter);
+            } else {
+                $params[$key] = $parameter;
+            }
+        }
+
+        return [$url, $params];
+    }
 }

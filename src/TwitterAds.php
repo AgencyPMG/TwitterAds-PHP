@@ -39,11 +39,13 @@ class TwitterAds
      */
     public function send(Request $request)
     {
+        list($url, $params) = $request->getParsedUrlAndParams();
+
         return Response::fromGuzzleResponse(
             call_user_func(
                 [$this->client, strtolower($request->getMethod())],
-                $request->getUrl(),
-                $request->getParameters()
+                $url,
+                $params
         ));
     }
 
@@ -56,4 +58,5 @@ class TwitterAds
     {
         return $this->client;
     }
+
 }
