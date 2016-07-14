@@ -1,0 +1,22 @@
+language: php
+
+php:
+  - 7.0
+
+sudo: true
+
+notifications:
+  slack: agencypmg:D4CzJp9YuFSBPpV2VjAjOnMR
+  email:
+    recipients:
+      - tech@pmg.com
+    on_success: change
+    on_failure: always
+
+before_install: 
+  - chmod +x test/ci-setup.sh; ./test/ci-setup.sh;
+
+install: 
+  - composer install --prefer-source
+
+script: make test

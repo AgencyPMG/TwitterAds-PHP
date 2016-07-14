@@ -1,0 +1,25 @@
+{
+    "name": "pmg/twitterads",
+    "description": "A Twitter Ads SDK",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "vlucas/phpdotenv": "^2.3",
+        "guzzlehttp/oauth-subscriber": "^0.3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Blake LaFleur",
+            "email": "blake.lafleur@pmg.co"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "PMG\\TwitterAds\\": "src/"
+        }
+    }
+}
