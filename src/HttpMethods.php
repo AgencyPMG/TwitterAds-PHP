@@ -9,8 +9,9 @@ namespace PMG\TwitterAds;
  */
 final class HttpMethods
 {
+    const DELETE = 'DELETE';
     const GET = 'GET';
+    const PATCH = 'PATCH';
     const POST = 'POST';
     const PUT = 'PUT';
-    const PATCH = 'PATCH';
 }
