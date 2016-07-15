@@ -9,7 +9,7 @@ use GuzzleHttp\Psr7\Response as GuzzleResponse;
  *
  * @since 2016-07-13
  */
-class Response implements Arrayable
+class Response implements Arrayable, \IteratorAggregate
 {
     private $code;
     private $headers;
@@ -29,6 +29,14 @@ class Response implements Arrayable
             $req->getHeaders(),
             json_decode($req->getBody(), true)
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->body);
     }
 
     public function getResponseCode()
@@ -54,6 +62,16 @@ class Response implements Arrayable
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * Returns data attached to this request
+     *
+     * @return array
+     */
+    public function getData()
+    {
+        return isset($this->body['data']) ? $this->body['data'] : [];
     }
 
     /**

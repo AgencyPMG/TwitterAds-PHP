@@ -6,12 +6,7 @@ php:
 sudo: true
 
 notifications:
-  slack: agencypmg:D4CzJp9YuFSBPpV2VjAjOnMR
-  email:
-    recipients:
-      - tech@pmg.com
-    on_success: change
-    on_failure: always
+  email: false
 
 install: 
   - composer install --prefer-source

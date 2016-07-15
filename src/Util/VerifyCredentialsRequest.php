@@ -22,7 +22,7 @@ final class VerifyCredentialsRequest extends Request
      */
     public function getUrl()
     {
-        return self::BASE_URL.'account/verify_credentials.json';
+        return 'account/verify_credentials.json';
     }
 
     /**
