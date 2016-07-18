@@ -4,32 +4,32 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "46aa36146657f1d522e1ae8dcd14b4f2",
-    "content-hash": "bfed27fce8140b50812c86604f2ee758",
+    "hash": "39e644c4b3dce794fa7b85aa93094981",
+    "content-hash": "ee5a76839b48de000ba6aabce2ece729",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.0",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "d094e337976dff9d8e2424e8485872194e768662"
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d094e337976dff9d8e2424e8485872194e768662",
-                "reference": "d094e337976dff9d8e2424e8485872194e768662",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/promises": "~1.0",
-                "guzzlehttp/psr7": "~1.1",
-                "php": ">=5.5.0"
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.3.1",
+                "php": ">=5.5"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "~4.0",
-                "psr/log": "~1.0"
+                "phpunit/phpunit": "^4.0",
+                "psr/log": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -67,20 +67,20 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-03-21 20:02:09"
+            "time": "2016-07-15 17:22:37"
         },
         {
             "name": "guzzlehttp/oauth-subscriber",
-            "version": "0.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/oauth-subscriber.git",
-                "reference": "04960cdef3cd80ea401d6b0ca8b3e110e9bf12cf"
+                "url": "https://github.com/Blackburn29/oauth-subscriber.git",
+                "reference": "bb458883f050bd9466436298409fcdcf4f9469b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/oauth-subscriber/zipball/04960cdef3cd80ea401d6b0ca8b3e110e9bf12cf",
-                "reference": "04960cdef3cd80ea401d6b0ca8b3e110e9bf12cf",
+                "url": "https://api.github.com/repos/Blackburn29/oauth-subscriber/zipball/bb458883f050bd9466436298409fcdcf4f9469b3",
+                "reference": "bb458883f050bd9466436298409fcdcf4f9469b3",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,6 @@
                     "GuzzleHttp\\Subscriber\\Oauth\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -115,10 +114,13 @@
             "description": "Guzzle OAuth 1.0 subscriber",
             "homepage": "http://guzzlephp.org/",
             "keywords": [
-                "Guzzle",
+                "guzzle",
                 "oauth"
             ],
-            "time": "2015-08-15 19:44:28"
+            "support": {
+                "source": "https://github.com/Blackburn29/oauth-subscriber/tree/master"
+            },
+            "time": "2016-07-18 22:18:56"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1629,7 +1631,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "guzzlehttp/oauth-subscriber": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

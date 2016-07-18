@@ -35,4 +35,14 @@ class UnitTestCase extends \PHPUnit_Framework_TestCase
             $this->lessThan(300)
         ), 'Non Successful Response Status:'.PHP_EOL.json_encode($resp->toArray()));
     }
+
+    protected function assertResponseCodeIsExactly($code, $resp)
+    {
+        $this->assertInstanceOf(Response::Class, $resp);
+        $this->assertEquals(
+            $code,
+            $resp->getResponseCode(),
+            "Expected response code $code, got ".$resp->getResponseCode().PHP_EOL.json_encode($resp->toArray())
+        );
+    }
 }

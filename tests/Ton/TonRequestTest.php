@@ -9,7 +9,7 @@ class TonRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
      */
     public function testSingleFilesCanBeUploadedViaTheApi()
     {
-        $file = new \SplFileObject(__DIR__.'/../test.csv');
+        $file = new \SplFileObject(__DIR__.'/../emails_large.csv');
 
         $content = $file->fread($file->getSize());
 
@@ -33,7 +33,6 @@ class TonRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
      */
     public function testMultiChunkFilesCanBeUploadedViaTheApi()
     {
-        $this->markTestSkipped();
         $file = new \SplFileObject(__DIR__.'/../emails_large.csv');
 
         list($location, $chunkSize) = $this->initalizeMultiChunkUpload($file);
@@ -44,6 +43,8 @@ class TonRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
             $read += strlen($contents);
             $this->uploadChunk($location, $contents, $start, $read, $file->getSize());
         }
+
+        $this->assertEquals($file->getSize(), $read);
     }
 
     private function initalizeMultiChunkUpload($file)
@@ -65,21 +66,15 @@ class TonRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
         $this->assertNotNull($response->getHeaders()['location']);
 
         $location = $response->getHeaders()['location'];
-        $chunk = intval($response->getHeaders()['x-ton-min-chunk-size']);
+        $chunk = intval($response->getHeaders()['x-ton-max-chunk-size']) / 2;
 
         return [$location, $chunk];
     }
 
     private function uploadChunk($location, $contents, $start, $read, $total)
     {
-        preg_match_all('/[^\d.\d]+([\d]+)\/([^?]+)[^&]+&[^\d]+([\d]+)/', $location, $matches);
-        $this->assertCount(4, $matches);
-
-        $request = new TonRequest('ton/bucket/:bucket/:id/:file?resumable=true&resumeId=:resume_id', [
-            'bucket' => TonRequest::ADS_BUCKET,
-            'id'     => $matches[1][0],
-            'file'   => $matches[2][0],
-            'resume_id' => $matches[3][0],
+        $request = new TonRequest(':location', [
+            'location' => substr($location,5),
             'body'  => $contents,
         ], [
             'Content-Type' => 'text/comma-separated-values',
@@ -87,7 +82,13 @@ class TonRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
         ]);
 
         $response = $this->twitter->send($request);
-        $this->assertSuccessfulResponse($response);
+        if ($read < $total) {
+            $this->assertResponseCodeIsExactly(308, $response);
+        } else {
+            $this->assertResponseCodeIsExactly(201, $response);
+            $this->assertArrayHasKey('location', $response->getHeaders());
+            $this->assertNotNull($response->getHeaders()['location']);
+        }
     }
 
     protected function setUp()

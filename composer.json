@@ -2,10 +2,16 @@
     "name": "blackburn29/twitterads",
     "description": "A Twitter Ads SDK",
     "type": "library",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Blackburn29/oauth-subscriber"
+        }
+    ],
     "require": {
         "guzzlehttp/guzzle": "^6.2",
         "vlucas/phpdotenv": "^2.3",
-        "guzzlehttp/oauth-subscriber": "^0.3.0"
+        "guzzlehttp/oauth-subscriber": "master-dev"
     },
     "license": "MIT",
     "authors": [

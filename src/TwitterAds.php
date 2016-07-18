@@ -41,14 +41,8 @@ class TwitterAds
     {
         list($url, $params) = $request->getParsedUrlAndParams();
 
-
-        $params['debug'] = true;
+        //$params['debug'] = true;
         $params['headers'] = $request->getHeaders();
-
-        // If there is a body, generate the required hash for it.
-        if (isset($params['body'])) {
-            $params['headers']['oauth_body_hash'] = self::generateHash($params['body']);
-        }
 
         return Response::fromGuzzleResponse(
             call_user_func(
