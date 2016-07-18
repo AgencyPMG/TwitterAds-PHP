@@ -1,6 +1,6 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
 /**
  * A simple class that defines Http request types

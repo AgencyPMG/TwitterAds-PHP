@@ -1,11 +1,11 @@
 <?php
 
-namespace PMG\TwitterAds\Accounts;
+namespace Blackburn29\TwitterAds\Accounts;
 
-use PMG\TwitterAds\Accounts\AccountRequest;
-use PMG\TwitterAds\HttpMethods;
+use Blackburn29\TwitterAds\Accounts\AccountRequest;
+use Blackburn29\TwitterAds\HttpMethods;
 
-class AccountRequestTest extends \PMG\TwitterAds\UnitTestCase
+class AccountRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
 {
     private $twitter;
 
@@ -103,16 +103,5 @@ class AccountRequestTest extends \PMG\TwitterAds\UnitTestCase
     protected function setUp()
     {
         $this->twitter = $this->getTwitterAds();
-    }
-
-    private function getAccountFromTwitter()
-    {
-        $request = new AccountRequest('accounts');
-
-        $response = $this->twitter->send($request);
-
-        $this->assertSuccessfulResponse($response);
-        $this->assertGreaterThan(0, count($response->getData()));
-        return $response->getData()[0];
     }
 }

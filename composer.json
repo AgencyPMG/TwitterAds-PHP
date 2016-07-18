@@ -1,5 +1,5 @@
 {
-    "name": "pmg/twitterads",
+    "name": "blackburn29/twitterads",
     "description": "A Twitter Ads SDK",
     "type": "library",
     "require": {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PMG\\TwitterAds\\": "src/"
+            "Blackburn29\\TwitterAds\\": "src/"
         }
     }
 }

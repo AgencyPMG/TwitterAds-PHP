@@ -1,6 +1,6 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 
@@ -15,10 +15,10 @@ class Response implements Arrayable, \IteratorAggregate
     private $headers;
     private $body;
 
-    public function __construct($code, array $headers, array $body)
+    public function __construct($code, array $headers, $body)
     {
         $this->code = $code;
-        $this->headers = $headers;
+        $this->headers = $this->parseHeaders($headers);
         $this->body = $body;
     }
 
@@ -27,7 +27,7 @@ class Response implements Arrayable, \IteratorAggregate
         return new self(
             $req->getStatusCode(),
             $req->getHeaders(),
-            json_decode($req->getBody(), true)
+            !empty($req->getBody()) ? json_decode($req->getBody(), true) : []
         );
     }
 
@@ -84,5 +84,20 @@ class Response implements Arrayable, \IteratorAggregate
             'headers' => $this->headers,
             'body'    => $this->body,
         ];
+    }
+
+    private function parseHeaders($headers)
+    {
+        $parsed = [];
+
+        foreach ($headers as $key => $header) {
+            if (is_array($header) && 1 === count($header)) {
+                $parsed[$key] = $header[0];
+            } else {
+                $parsed[$key] = $header;
+            }
+        }
+
+        return $parsed;
     }
 }

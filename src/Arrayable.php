@@ -1,6 +1,6 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
 /**
  * A marker interface used to define if a class can be converted to an array

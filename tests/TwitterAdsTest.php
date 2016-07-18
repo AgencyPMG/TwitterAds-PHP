@@ -1,8 +1,8 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
-use PMG\TwitterAds\Util\VerifyCredentialsRequest;
+use Blackburn29\TwitterAds\Util\VerifyCredentialsRequest;
 
 class TwitterAdsTest extends UnitTestCase
 {

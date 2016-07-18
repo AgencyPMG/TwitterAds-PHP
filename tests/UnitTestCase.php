@@ -1,6 +1,8 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
+
+use Blackburn29\TwitterAds\Accounts\AccountRequest;
 
 class UnitTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -12,6 +14,17 @@ class UnitTestCase extends \PHPUnit_Framework_TestCase
             getenv('ACCESS_TOKEN'),
             getenv('ACCESS_TOKEN_SECRET')
         );
+    }
+
+    protected function getAccountFromTwitter()
+    {
+        $request = new AccountRequest('accounts');
+
+        $response = $this->getTwitterAds()->send($request);
+
+        $this->assertSuccessfulResponse($response);
+        $this->assertGreaterThan(0, count($response->getData()));
+        return $response->getData()[0];
     }
 
     protected function assertSuccessfulResponse($resp)

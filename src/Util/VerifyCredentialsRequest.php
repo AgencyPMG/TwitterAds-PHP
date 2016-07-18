@@ -1,13 +1,18 @@
 <?php
 
-namespace PMG\TwitterAds\Util;
+namespace Blackburn29\TwitterAds\Util;
 
-use PMG\TwitterAds\HttpMethods;
-use PMG\TwitterAds\Request;
+use Blackburn29\TwitterAds\HttpMethods;
+use Blackburn29\TwitterAds\Request;
 
 final class VerifyCredentialsRequest extends Request
 {
     const BASE_URL = 'https://api.twitter.com/1.1/';
+
+    public function __construct()
+    {
+        //noop
+    }
 
     /**
      * {@inheritdoc}

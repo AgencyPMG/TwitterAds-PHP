@@ -1,9 +1,9 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
-use PMG\TwitterAds\Fixtures\TestRequest;
-use PMG\TwitterAds\Request;
+use Blackburn29\TwitterAds\Fixtures\TestRequest;
+use Blackburn29\TwitterAds\Request;
 
 class RequestTest extends UnitTestCase
 {

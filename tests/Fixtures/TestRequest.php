@@ -1,8 +1,8 @@
 <?php
 
-namespace PMG\TwitterAds\Fixtures;
+namespace Blackburn29\TwitterAds\Fixtures;
 
-use PMG\TwitterAds\Request;
+use Blackburn29\TwitterAds\Request;
 
 class TestRequest extends Request
 {

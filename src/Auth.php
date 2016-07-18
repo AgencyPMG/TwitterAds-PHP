@@ -1,6 +1,6 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 

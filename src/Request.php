@@ -1,40 +1,76 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
-use PMG\TwitterAds\Exception\UndefinedRoute;
+use Blackburn29\TwitterAds\Exception\UndefinedRoute;
 
 abstract class Request
 {
     const BASE_URL = 'https://ads-api.twitter.com/1/';
+
+    private $method;
+    private $url;
+    private $parameters;
+    private $headers;
+
+    /**
+     * Initiates a network request
+     *
+     * @param $url string - the url to request
+     * @param $params array - route and body parameters
+     * @param $headers array - headers to send
+     * @param $method string|null - an optional override for the default http method
+     */
+    public function __construct($url, $params=[], $headers=[], $method=null)
+    {
+        list($this->url, $this->method) = $this->assureUrl($url);
+        $this->parameters = $params;
+        $this->headers = $headers;
+
+        if ($method) {
+            $this->method = $method;
+        }
+    }
 
     /**
      * Gets the HTTP Method type
      * 
      * @return string
      */
-    abstract public function getMethod();
+    public function getMethod()
+    {
+        return $this->method;
+    }
 
     /**
      * Gets the url to send the request to. (This should be fully qualified)
      *
      * @return string
      */
-    abstract public function getUrl();
+    public function getUrl()
+    {
+        return $this->url;
+    }
 
     /**
      * Gets the parameters associated with the request, including any query parameters.
      *
      * @return associative array
      */
-    abstract public function getParameters();
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
 
     /**
      * Gets all headers assoicated with the request. 
      *
      * @return associative array
      */
-    abstract public function getHeaders();
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
 
     /**
      * Transforms a incomplete url using the parameters and returns 

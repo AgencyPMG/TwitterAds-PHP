@@ -1,12 +1,12 @@
 <?php
 
-namespace PMG\TwitterAds;
+namespace Blackburn29\TwitterAds;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 
-use PMG\TwitterAds\Exception\UnsupportedHttpMethod;
+use Blackburn29\TwitterAds\Exception\UnsupportedHttpMethod;
 
 class TwitterAds
 {
@@ -41,6 +41,15 @@ class TwitterAds
     {
         list($url, $params) = $request->getParsedUrlAndParams();
 
+
+        $params['debug'] = true;
+        $params['headers'] = $request->getHeaders();
+
+        // If there is a body, generate the required hash for it.
+        if (isset($params['body'])) {
+            $params['headers']['oauth_body_hash'] = self::generateHash($params['body']);
+        }
+
         return Response::fromGuzzleResponse(
             call_user_func(
                 [$this->client, strtolower($request->getMethod())],
@@ -57,6 +66,11 @@ class TwitterAds
     public function getHttpClient()
     {
         return $this->client;
+    }
+
+    private static function generateHash($content)
+    {
+        return base64_encode(sha1($content));
     }
 
 }
