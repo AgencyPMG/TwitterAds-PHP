@@ -24,16 +24,27 @@ final class Auth
         $this->tokenSecret = $tokenSecret;
     }
 
+    /**
+     * @return string
+     */
     public function getToken()
     {
         return $this->accessToken;
     }
 
+    /**
+     * @return string
+     */
     public function getSecret()
     {
         return $this->tokenSecret;
     }
 
+    /**
+     * Transforms this Auth object to the correct oAuth object for the Guzzle subscriber.
+     *
+     * @return GuzzleHttp\Subscriber\Oauth\Oauth1
+     */
     public function toGuzzleOAuth()
     {
         return new Oauth1([
@@ -42,68 +53,5 @@ final class Auth
             'token'             => $this->accessToken,
             'token_secret'      => $this->tokenSecret,
         ]);
-    }
-
-    public function getAuthenticationHeaders(Request $request)
-    {
-        $method = $request->getMethod();
-        $baseHeaders = $this->getBaseHeaders();
-        $signature = $this->getOauthSignature(
-            $method,
-            self::getBaseUrl($request->getUrl()),
-            $request->getParameters(),
-            $baseHeaders
-        );
-
-        foreach($baseHeaders as $key => $header) {
-            $baseHeaders[$key] = urlencode($header);
-        }
-
-        $baseHeaders['oauth_signature'] = $signature;
-        ksort($baseHeaders);
-
-        return $baseHeaders;
-    }
-
-    private function getBaseHeaders()
-    {
-        return [
-            'oauth_consumer_key'        => $this->consumerKey,
-            'oauth_nonce'               => self::generateNonce(),
-            'oauth_signature_method'    => 'HMAC-SHA1',
-            'oauth_timestamp'           => (new \DateTime())->getTimeStamp(),
-            'oauth_token'               => $this->accessToken,
-            'oauth_version'             => '1.0',
-        ];
-    }
-
-    public function getOauthSignature($method, $baseUrl, $parameters, $headers)
-    {
-        $parameters = implode('&', $parameters);
-
-        foreach($headers as $key => $header) {
-            $headers[$key] = urlencode($header);
-        }
-
-        return base64_encode(hash_hmac(
-            'sha1',
-            $method.'&'.urlencode($baseUrl).
-            implode('&', $headers).
-            $parameters,
-            $this->consumerSecret.'&'.$this->tokenSecret,
-            true
-        ));
-    }
-
-    private static function getBaseUrl($url)
-    {
-        $split = parse_url($url);
-
-        return $split['scheme'].'://'.strtolower($split['host']).$split['path'];
-    }
-
-    private static function generateNonce()
-    {
-        return md5(microtime().mt_rand());
     }
 }

@@ -14,6 +14,13 @@ abstract class Request
     private $headers;
 
     /**
+     * Returns an array of accepted routes for this request
+     *
+     * @return array
+     */
+    abstract protected function getRoutes();
+
+    /**
      * Initiates a network request
      *
      * @param $url string - the url to request
@@ -98,17 +105,19 @@ abstract class Request
 
     protected function assureUrl($url)
     {
-        if (!isset(static::ROUTES[$url])) {
+        $routes = $this->getRoutes();
+
+        if (!isset($routes[$url])) {
             throw new UndefinedRoute(
                 sprintf('"%s" is not a valid route for %s', $url, get_class($this))
             );
         }
 
-        return [$url, static::ROUTES[$url]];
+        return [$url, $routes[$url]];
     }
 
-    private function getBaseUrl()
+    protected function getBaseUrl()
     {
-        return defined('static::BASE_URL') ? static::BASE_URL : self::BASE_URL;
+        return self::BASE_URL;
     }
 }

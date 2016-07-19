@@ -5,6 +5,12 @@ namespace Blackburn29\TwitterAds\Ton;
 use Blackburn29\TwitterAds\TwitterAds;
 use Blackburn29\TwitterAds\Ton\Exception;
 
+/**
+ * A helper class for upload files to the TON API.
+ * This class will choose the correct upload method automatically
+ *
+ * @since 2016-07-18
+ */
 class TonUpload
 {
     const MAX_SINGLE_CHUNK_SIZE = 1024 * 1024 * 8;
@@ -19,16 +25,29 @@ class TonUpload
         $this->contentType = $contentType;
     }
 
+    /**
+     * Returns the size of the file in bytes
+     *
+     * @return int
+     */
     public function getSize()
     {
         return $this->file->getSize();
     }
 
+    /**
+     * @return string
+     */
     public function getContentType()
     {
         return $this->contentType;
     }
 
+    /**
+     * Uploads the file via the TON API
+     *
+     * @return Response
+     */
     public function upload()
     {
         if ($this->getSize() < self::MAX_SINGLE_CHUNK_SIZE) {
@@ -39,6 +58,11 @@ class TonUpload
         }
     }
 
+    /**
+     * Performs a single chunk upload
+     *
+     * @return Request
+     */
     private function uploadSingle()
     {
         $content = $this->file->fread($this->getSize());
@@ -63,6 +87,14 @@ class TonUpload
         return $response;
     }
 
+    /**
+     * Reads a file by chunksize and uploads it
+     *
+     * @param $location string - the location url from the TON init call
+     * @param @chunkSize int - the size of the chunk to read
+     *
+     * @return Response
+     */
     private function uploadChunked($location, $chunkSize)
     {
         $resp = null;
@@ -76,6 +108,13 @@ class TonUpload
         return $resp;
     }
 
+    /**
+     * Initializes a multi chunk upload
+     *
+     * @throws Blackburn29\TwitterAds\Ton\Exception\TonInitializeFailed
+     *
+     * @return list - location url and chunk size
+     */
     private function initalizeMultiChunkUpload()
     {
         $request = new TonRequest('ton/bucket/:bucket?resumable=true', [
@@ -108,6 +147,17 @@ class TonUpload
         return [$location, $chunk];
     }
 
+    /**
+     * Uploads a chunk via the TON API
+     *
+     * @param $location string - the location url
+     * @param $contents string - the file contents to send
+     * @param $start int - the beginning index of bytes being sent
+     * @param $read int - the total number of bytes read thus far
+     *
+     * @throws Blackburn29\TwitterAds\Ton\Exception\TonUploadFailed
+     * @return Response
+     */
     private function uploadChunk($location, $contents, $start, $read)
     {
         $request = new TonRequest(':location', [
@@ -133,6 +183,11 @@ class TonUpload
         return $response;
     }
 
+    /**
+     * Gets a HTML formatted expiration date 3 days into the future.
+     *
+     * @return DateTime
+     */
     private static function getExpiration()
     {
         return (new \DateTime())->modify('+3 day')->format('D, d M Y H:i:s \G\M\T');

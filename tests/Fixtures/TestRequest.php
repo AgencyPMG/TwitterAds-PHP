@@ -16,6 +16,11 @@ class TestRequest extends Request
         $this->headers = $headers;
     }
 
+    protected function getRoutes()
+    {
+        return [];
+    }
+
     /**
      * {@inheritdoc}
      */

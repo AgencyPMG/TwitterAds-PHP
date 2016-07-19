@@ -21,7 +21,12 @@ class TwitterAds
      */
     private $client;
 
-    public function __construct($consumerKey, $consumerSecret, $token, $secret)
+    /**
+     * @var boolean
+     */
+    private $debug;
+
+    public function __construct($consumerKey, $consumerSecret, $token, $secret, $debug=false)
     {
         $this->auth = new Auth($consumerKey, $consumerSecret, $token, $secret);
 
@@ -42,11 +47,11 @@ class TwitterAds
     {
         list($url, $params) = $request->getParsedUrlAndParams();
 
-        //$params['debug'] = true;
+        $params['debug'] = $this->debug;
         $params['headers'] = $request->getHeaders();
 
         try {
-            return Response::fromGuzzleResponse(
+            return Response::fromResponseInterface(
                 call_user_func(
                     [$this->client, strtolower($request->getMethod())],
                     $url,
@@ -66,10 +71,4 @@ class TwitterAds
     {
         return $this->client;
     }
-
-    private static function generateHash($content)
-    {
-        return base64_encode(sha1($content));
-    }
-
 }

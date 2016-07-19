@@ -2,7 +2,7 @@
 
 namespace Blackburn29\TwitterAds;
 
-use GuzzleHttp\Psr7\Response as GuzzleResponse;
+use \Psr\Http\Message\ResponseInterface;
 
 /**
  * A response object used for wrapping an http response
@@ -22,7 +22,12 @@ class Response implements Arrayable, \IteratorAggregate
         $this->body = $body;
     }
 
-    public static function fromGuzzleResponse(GuzzleResponse $req)
+    /**
+     * Generates a response from the PSR7 response interface
+     *
+     * @return Response
+     */
+    public static function fromResponseInterface(ResponseInterface $req)
     {
         return new self(
             $req->getStatusCode(),
@@ -39,6 +44,11 @@ class Response implements Arrayable, \IteratorAggregate
         return new ArrayIterator($this->body);
     }
 
+    /**
+     * Returns the response code associated with the request
+     *
+     * @return int
+     */
     public function getResponseCode()
     {
         return $this->code;
@@ -86,6 +96,13 @@ class Response implements Arrayable, \IteratorAggregate
         ];
     }
 
+    /**
+     * Formats headers into a more readable output
+     *
+     * @param $headers array
+     *
+     * @return array
+     */
     private function parseHeaders($headers)
     {
         $parsed = [];
