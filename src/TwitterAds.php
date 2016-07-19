@@ -39,6 +39,7 @@ class TwitterAds
     public function __construct($consumerKey, $consumerSecret, $token, $secret, $debug=false)
     {
         $this->auth = new Auth($consumerKey, $consumerSecret, $token, $secret);
+        $this->debug = $debug;
 
         $stack = HandlerStack::create();
         $stack->push($this->auth->toGuzzleOAuth());
