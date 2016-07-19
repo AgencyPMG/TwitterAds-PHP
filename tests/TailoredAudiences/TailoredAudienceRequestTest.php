@@ -12,6 +12,8 @@
 
 namespace PMG\TwitterAds\TailoredAudiences;
 
+use PMG\TwitterAds\HttpMethods;
+
 class TailoredAudienceRequestTest extends \PMG\TwitterAds\UnitTestCase
 {
     private $twitter, $account;
@@ -50,6 +52,25 @@ class TailoredAudienceRequestTest extends \PMG\TwitterAds\UnitTestCase
             'account_id' => $id,
             'id'         => $audience,
         ]);
+
+        $response = $this->twitter->send($request);
+        $this->assertSuccessfulResponse($response);
+    }
+
+    /**
+     * @group create-audience
+     */
+    public function testAudiencesCanBeCreatedFromTheApi()
+    {
+        $id = $this->account['id'];
+
+        $request = new TailoredAudienceRequest('accounts/:account_id/tailored_audiences', [
+            'account_id' => $id,
+            'form_params' => [
+                'name'  => 'TwitterAds Audience',
+                'list_type' => 'EMAIL',
+            ],
+        ], [], HttpMethods::POST);
 
         $response = $this->twitter->send($request);
         $this->assertSuccessfulResponse($response);
