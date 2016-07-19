@@ -4,6 +4,11 @@
 # TwitterAds-PHP
 A simple Twitter Ads SDK for PHP, powered by Guzzle.
 
+## Installing
+```bash
+you@yourcomputer:yourproject> composer require pmg/twitterads
+```
+
 ## Initializing the client
 Initializing the client is simple. Just supply your keys and go!
 ```php
@@ -18,6 +23,16 @@ I attempt to keep the endpoints exactly as they appear in the API docs, however 
 - Route parameters are fulfilled in an array after the requested API endpoint (See example below)
 - Each endpoint has a default `HttpMethod` assigned to it, however this can be overridden in the constructor for each `Request` type
 - Requests have the following constructor signature: `__construct($url, $params=[], $headers=[], $method=null)` where `$url` is the API endpoint, `$params` is the body/route parameters, `$headers` is an associative array of headers to send with the request, and `$method` is used to override the default `HttpMethod`
+
+An example of making a request:
+```php
+use PMG\TwitterAds\TailoredAudiences\TailoredAudienceRequest;
+
+$request = new TailoredAudienceRequest('accounts/:account_id/tailored_audiences', ['account_id' => ACCOUNT]);
+$response = $twitter->send($request);
+
+//Returns PMG\TwitterAds\Response
+```
 
 ## Responses
 All requests, if successful, will return a `PMG\TwitterAds\Response` which is a simple wrapper around the Guzzle response that was 
@@ -55,16 +70,6 @@ object(PMG\TwitterAds\Response)#228 (3) {
     string(9) "2222"
   }
 }
-```
-
-An example of making a request:
-```php
-use PMG\TwitterAds\TailoredAudiences\TailoredAudienceRequest;
-
-$request = new TailoredAudienceRequest('accounts/:account_id/tailored_audiences', ['account_id' => ACCOUNT]);
-$response = $twitter->send($request);
-
-//Returns PMG\TwitterAds\Response
 ```
 
 ## Using the TON API
