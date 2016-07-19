@@ -33,6 +33,7 @@ class TailoredAudienceRequest extends Request
             'accounts/:account_id/tailored_audiences/:id'                => HttpMethods::GET,
             'accounts/:account_id/tailored_audiences/:id/permissions'    => HttpMethods::GET,
             'accounts/:account_id/tailored_audiences/:id/reach_estimate' => HttpMethods::GET,
+            'accounts/:account_id/tailored_audience_changes'         => HttpMethods::POST,
             'accounts/:account_id/tailored_audience_changes/:id'         => HttpMethods::GET,
             'accounts/:account_id/tailored_audiences/global_opt_out'     => HttpMethods::PUT,
         ];
