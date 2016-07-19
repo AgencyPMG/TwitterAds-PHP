@@ -82,6 +82,7 @@ class TonUpload
             'body' => $content,
         ], [
             'Content-Type'   => 'text/csv',
+            'Content-Length' => $this->getSize(),
             'X-TON-Expires'  => self::getExpiration(),
         ]);
 
