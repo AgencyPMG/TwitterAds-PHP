@@ -11,7 +11,8 @@
     "require": {
         "guzzlehttp/guzzle": "^6.2",
         "vlucas/phpdotenv": "^2.3",
-        "guzzlehttp/oauth-subscriber": "master-dev"
+        "guzzlehttp/oauth-subscriber": "master-dev",
+        "satooshi/php-coveralls": "^1.0"
     },
     "license": "MIT",
     "authors": [

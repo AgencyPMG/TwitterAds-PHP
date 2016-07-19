@@ -11,4 +11,7 @@ notifications:
 install: 
   - composer install --prefer-source
 
-script: make test
+script: make test_ci
+
+after_script:
+  - php vendor/bin/coveralls -v
