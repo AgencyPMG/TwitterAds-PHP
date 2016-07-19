@@ -69,7 +69,7 @@ class TwitterAds
                     $params
             ));
         } catch (BadResponseException $e) {
-            throw new TwitterAdsException('Failed to make request.', $e->getCode(), $e);
+            throw new TwitterAdsException('Failed to make request. '.$e->getMessage(), $e->getCode(), $e);
         }
     }
 
