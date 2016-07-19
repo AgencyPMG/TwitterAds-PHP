@@ -1,5 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/PMG/TwitterAds-PHP/badge.svg?branch=master)](https://coveralls.io/github/PMG/TwitterAds-PHP?branch=master)
-[![Build Status](https://travis-ci.org/PMG/TwitterAds-PHP.svg?branch=master)](https://travis-ci.org/PMG/TwitterAds-PHP)
+[![Coverage Status](https://coveralls.io/repos/github/AgencyPMG/TwitterAds-PHP/badge.svg?branch=master)](https://coveralls.io/github/PMG/TwitterAds-PHP?branch=master)
+[![Build Status](https://travis-ci.org/AgencyPMG/TwitterAds-PHP.svg?branch=master)](https://travis-ci.org/AgencyPMG/TwitterAds-PHP)
 
 # TwitterAds-PHP
 A simple Twitter Ads SDK for PHP, powered by Guzzle.
