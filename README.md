@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/AgencyPMG/TwitterAds-PHP/badge.svg?branch=master)](https://coveralls.io/github/PMG/TwitterAds-PHP?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/AgencyPMG/TwitterAds-PHP/badge.svg?branch=master)](https://coveralls.io/github/AgencyPMG/TwitterAds-PHP?branch=master)
 [![Build Status](https://travis-ci.org/AgencyPMG/TwitterAds-PHP.svg?branch=master)](https://travis-ci.org/AgencyPMG/TwitterAds-PHP)
 
 # TwitterAds-PHP
