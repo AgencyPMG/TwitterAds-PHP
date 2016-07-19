@@ -2,7 +2,12 @@
 /*
  * This file is part of pmg/twitterads
  *
- * (c) PMG <https://www.pmg.com>. All rights reserved.
+ * Copyright (c) PMG <https://www.pmg.com>
+ *
+ * For full copyright information see the LICENSE file distributed
+ * with this source code.
+ *
+ * @license     https://opensource.org/licenses/MIT MIT
  */
 
 namespace PMG\TwitterAds\Util;
