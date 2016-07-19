@@ -94,7 +94,6 @@ class TonRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
     protected function setUp()
     {
         $this->twitter = $this->getTwitterAds();
-        $this->account = $this->getAccountFromTwitter();
     }
 
     private function getExpiration()
