@@ -4,6 +4,7 @@ namespace Blackburn29\TwitterAds;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 
 use Blackburn29\TwitterAds\Exception\UnsupportedHttpMethod;
@@ -44,12 +45,16 @@ class TwitterAds
         //$params['debug'] = true;
         $params['headers'] = $request->getHeaders();
 
-        return Response::fromGuzzleResponse(
-            call_user_func(
-                [$this->client, strtolower($request->getMethod())],
-                $url,
-                $params
-        ));
+        try {
+            return Response::fromGuzzleResponse(
+                call_user_func(
+                    [$this->client, strtolower($request->getMethod())],
+                    $url,
+                    $params
+            ));
+        } catch (BadResponseException $e) {
+            throw new TwitterAdsException('Failed to make request.', $e->getCode(), $e);
+        }
     }
 
     /**

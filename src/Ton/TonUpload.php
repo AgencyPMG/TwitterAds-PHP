@@ -2,6 +2,7 @@
 
 namespace Blackburn29\TwitterAds\Ton;
 
+use Blackburn29\TwitterAds\TwitterAds;
 use Blackburn29\TwitterAds\Ton\Exception;
 
 class TonUpload
@@ -11,8 +12,9 @@ class TonUpload
     private $file;
     private $contentType;
 
-    public function __construct(\SplFileObject $file, $contentType)
+    public function __construct(TwitterAds $twitter, \SplFileObject $file, $contentType)
     {
+        $this->twitter = $twitter;
         $this->file = $file;
         $this->contentType = $contentType;
     }
@@ -46,12 +48,12 @@ class TonUpload
             'body' => $content,
         ], [
             'Content-Type'   => 'text/csv',
-            'X-TON-Expires'  => $this->getExpiration(),
+            'X-TON-Expires'  => self::getExpiration(),
         ]);
 
         $response = $this->twitter->send($request);
 
-        if (201 !== $response->getStatusCode()) {
+        if (201 !== $response->getResponseCode()) {
             throw new TonUploadFailed(sprintf(
                 'Invalid response code when uploading file. %s',
                 json_encode($response->getBody())
@@ -65,7 +67,7 @@ class TonUpload
     {
         $resp = null;
         $read = 0;
-        while ($contents = $file->fread($chunkSize)) {
+        while ($contents = $this->file->fread($chunkSize)) {
             $start = $read;
             $read += strlen($contents);
             $resp = $this->uploadChunk($location, $contents, $start, $read);
@@ -87,7 +89,7 @@ class TonUpload
 
         $response = $this->twitter->send($request);
 
-        if (201 !== $code = $response->getStatusCode()) {
+        if (201 !== $code = $response->getResponseCode()) {
             throw new Exception\TonInitializeFailed(sprintf(
                 'Expected 201 response code. Got %s', $code
             ));
@@ -118,15 +120,21 @@ class TonUpload
 
         $response = $this->twitter->send($request);
 
-        $code = $response->getStatusCode();
+        $code = $response->getResponseCode();
 
-        if (201 !== $code || 308 !== $code) {
+        if (201 !== $code && 308 !== $code) {
             throw new Exception\TonUploadFailed(sprintf(
-                'Invalid response code when uploading chunk. %s',
+                'Invalid response code (%s) when uploading chunk. Response: %s',
+                $code,
                 json_encode($response->getBody())
             ));
         }
 
         return $response;
+    }
+
+    private static function getExpiration()
+    {
+        return (new \DateTime())->modify('+3 day')->format('D, d M Y H:i:s \G\M\T');
     }
 }
