@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bcff42404b2426b809cb51c06aad20e0",
-    "content-hash": "fa84daecebea6e75d8e9da05f8ae3c8d",
+    "hash": "4c43e9e258a5df4693d445d06fbdf57d",
+    "content-hash": "a8be0214b24a2a970b09b38d7c452ad4",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -167,16 +167,16 @@
         },
         {
             "name": "guzzlehttp/oauth-subscriber",
-            "version": "dev-master",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Blackburn29/oauth-subscriber.git",
-                "reference": "bb458883f050bd9466436298409fcdcf4f9469b3"
+                "url": "https://github.com/guzzle/oauth-subscriber.git",
+                "reference": "04960cdef3cd80ea401d6b0ca8b3e110e9bf12cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Blackburn29/oauth-subscriber/zipball/bb458883f050bd9466436298409fcdcf4f9469b3",
-                "reference": "bb458883f050bd9466436298409fcdcf4f9469b3",
+                "url": "https://api.github.com/repos/guzzle/oauth-subscriber/zipball/04960cdef3cd80ea401d6b0ca8b3e110e9bf12cf",
+                "reference": "04960cdef3cd80ea401d6b0ca8b3e110e9bf12cf",
                 "shasum": ""
             },
             "require": {
@@ -214,9 +214,9 @@
                 "oauth"
             ],
             "support": {
-                "source": "https://github.com/PMG/oauth-subscriber/tree/master"
+                "source": "https://github.com/Blackburn29/oauth-subscriber/tree/0.3.0"
             },
-            "time": "2016-07-18 22:18:56"
+            "time": "2015-08-15 19:44:28"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2153,9 +2153,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "guzzlehttp/oauth-subscriber": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
