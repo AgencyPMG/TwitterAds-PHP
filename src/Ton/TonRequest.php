@@ -1,9 +1,14 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\Ton;
+namespace PMG\TwitterAds\Ton;
 
-use Blackburn29\TwitterAds\Request;
-use Blackburn29\TwitterAds\HttpMethods;
+use PMG\TwitterAds\Request;
+use PMG\TwitterAds\HttpMethods;
 
 /**
  * Request object for uploading files via the Twitter TON API

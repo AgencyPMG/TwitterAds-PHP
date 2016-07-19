@@ -1,8 +1,13 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\TailoredAudiences;
+namespace PMG\TwitterAds\TailoredAudiences;
 
-class TailoredAudienceRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
+class TailoredAudienceRequestTest extends \PMG\TwitterAds\UnitTestCase
 {
     private $twitter, $account;
 

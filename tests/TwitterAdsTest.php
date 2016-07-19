@@ -1,9 +1,14 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds;
+namespace PMG\TwitterAds;
 
-use Blackburn29\TwitterAds\Fixtures\TestRequest;
-use Blackburn29\TwitterAds\Util\VerifyCredentialsRequest;
+use PMG\TwitterAds\Fixtures\TestRequest;
+use PMG\TwitterAds\Util\VerifyCredentialsRequest;
 
 class TwitterAdsTest extends UnitTestCase
 {
@@ -20,7 +25,7 @@ class TwitterAdsTest extends UnitTestCase
     }
 
     /**
-     * @expectedException Blackburn29\TwitterAds\TwitterAdsException
+     * @expectedException PMG\TwitterAds\TwitterAdsException
      */
     public function testGuzzleWillThrowCorrectExceptionOnFailure()
     {

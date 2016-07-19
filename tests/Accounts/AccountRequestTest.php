@@ -1,11 +1,16 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\Accounts;
+namespace PMG\TwitterAds\Accounts;
 
-use Blackburn29\TwitterAds\Accounts\AccountRequest;
-use Blackburn29\TwitterAds\HttpMethods;
+use PMG\TwitterAds\Accounts\AccountRequest;
+use PMG\TwitterAds\HttpMethods;
 
-class AccountRequestTest extends \Blackburn29\TwitterAds\UnitTestCase
+class AccountRequestTest extends \PMG\TwitterAds\UnitTestCase
 {
     private $twitter;
 

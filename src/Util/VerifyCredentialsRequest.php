@@ -1,9 +1,14 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\Util;
+namespace PMG\TwitterAds\Util;
 
-use Blackburn29\TwitterAds\HttpMethods;
-use Blackburn29\TwitterAds\Request;
+use PMG\TwitterAds\HttpMethods;
+use PMG\TwitterAds\Request;
 
 /**
  * A request that verifies the Twitter oAuth credentials supplied

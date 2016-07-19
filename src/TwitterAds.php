@@ -1,13 +1,18 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds;
+namespace PMG\TwitterAds;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 
-use Blackburn29\TwitterAds\Exception\UnsupportedHttpMethod;
+use PMG\TwitterAds\Exception\UnsupportedHttpMethod;
 
 class TwitterAds
 {

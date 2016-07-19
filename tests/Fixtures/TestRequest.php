@@ -1,8 +1,13 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\Fixtures;
+namespace PMG\TwitterAds\Fixtures;
 
-use Blackburn29\TwitterAds\Request;
+use PMG\TwitterAds\Request;
 
 class TestRequest extends Request
 {

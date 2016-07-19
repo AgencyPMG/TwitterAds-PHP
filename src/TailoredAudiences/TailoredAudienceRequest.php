@@ -1,9 +1,14 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\TailoredAudiences;
+namespace PMG\TwitterAds\TailoredAudiences;
 
-use Blackburn29\TwitterAds\HttpMethods;
-use Blackburn29\TwitterAds\Request;
+use PMG\TwitterAds\HttpMethods;
+use PMG\TwitterAds\Request;
 
 /**
  * Request object for tailored audience related actions

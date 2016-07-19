@@ -1,8 +1,13 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds;
+namespace PMG\TwitterAds;
 
-use Blackburn29\TwitterAds\Accounts\AccountRequest;
+use PMG\TwitterAds\Accounts\AccountRequest;
 
 class UnitTestCase extends \PHPUnit_Framework_TestCase
 {

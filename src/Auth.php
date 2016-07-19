@@ -1,6 +1,11 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds;
+namespace PMG\TwitterAds;
 
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 

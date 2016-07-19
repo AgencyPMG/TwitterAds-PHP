@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f2b3ff4e7658e3ea59f599e41b01e8ea",
-    "content-hash": "9a8bbdcb2549bedf722af1c19547b474",
+    "hash": "bcff42404b2426b809cb51c06aad20e0",
+    "content-hash": "fa84daecebea6e75d8e9da05f8ae3c8d",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -214,7 +214,7 @@
                 "oauth"
             ],
             "support": {
-                "source": "https://github.com/Blackburn29/oauth-subscriber/tree/master"
+                "source": "https://github.com/PMG/oauth-subscriber/tree/master"
             },
             "time": "2016-07-18 22:18:56"
         },

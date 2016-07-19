@@ -1,9 +1,14 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\Ton;
+namespace PMG\TwitterAds\Ton;
 
-use Blackburn29\TwitterAds\TwitterAds;
-use Blackburn29\TwitterAds\Ton\Exception;
+use PMG\TwitterAds\TwitterAds;
+use PMG\TwitterAds\Ton\Exception;
 
 /**
  * A helper class for upload files to the TON API.
@@ -111,7 +116,7 @@ class TonUpload
     /**
      * Initializes a multi chunk upload
      *
-     * @throws Blackburn29\TwitterAds\Ton\Exception\TonInitializeFailed
+     * @throws PMG\TwitterAds\Ton\Exception\TonInitializeFailed
      *
      * @return list - location url and chunk size
      */
@@ -155,7 +160,7 @@ class TonUpload
      * @param $start int - the beginning index of bytes being sent
      * @param $read int - the total number of bytes read thus far
      *
-     * @throws Blackburn29\TwitterAds\Ton\Exception\TonUploadFailed
+     * @throws PMG\TwitterAds\Ton\Exception\TonUploadFailed
      * @return Response
      */
     private function uploadChunk($location, $contents, $start, $read)

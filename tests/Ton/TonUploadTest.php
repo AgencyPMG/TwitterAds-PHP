@@ -1,8 +1,13 @@
 <?php
+/*
+ * This file is part of pmg/twitterads
+ *
+ * (c) PMG <https://www.pmg.com>. All rights reserved.
+ */
 
-namespace Blackburn29\TwitterAds\Ton;
+namespace PMG\TwitterAds\Ton;
 
-class TonUploadTest extends \Blackburn29\TwitterAds\UnitTestCase
+class TonUploadTest extends \PMG\TwitterAds\UnitTestCase
 {
     /**
      * @group ton-upload
